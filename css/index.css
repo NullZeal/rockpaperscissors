@@ -1,0 +1,10 @@
+#playerInput, #randomRoll, #gameResult{
+    text-align: center;
+    align-items: center;
+}
+
+#button{
+    position:absolute;
+    left: 50%;
+    translate: -50%;
+}
