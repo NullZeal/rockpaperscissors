@@ -67,7 +67,6 @@ function isGameDraw(playerInput, randomResult){
     return result;
 }
 
-
 function getRandomRockPaperScissorsResultInString(){
     let possibleAnswers = ['Rock', 'Paper', 'Scissors'];
     let answer = possibleAnswers[Math.floor(Math.random() * (possibleAnswers.length - 0) + 0)];
