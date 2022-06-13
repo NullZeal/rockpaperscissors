@@ -1,4 +1,9 @@
-#playerInput, #randomRoll, #gameResult{
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 24px;
+}
+
+#playerInput, #randomRoll, #gameResult, #pick{
     text-align: center;
     align-items: center;
 }
@@ -7,4 +12,13 @@
     position:absolute;
     left: 50%;
     translate: -50%;
+}
+
+#imgContainer{
+    display: flex;
+    justify-content: center;
+}
+
+#imgContainer img{
+    max-width: 10%;
 }

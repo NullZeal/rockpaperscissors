@@ -1,7 +1,22 @@
-document.getElementById("button").addEventListener("click", playOneGame);
+let currentWeaponChoice = "";
+
+function setRockWeapon(){
+    currentWeaponChoice = "Rock";
+    playOneGame();
+}
+
+function setPaperWeapon(){
+    currentWeaponChoice = "Paper";
+    playOneGame();
+}
+
+function setScissorsWeapon(){
+    currentWeaponChoice = "Scissors";
+    playOneGame();
+}
 
 function playOneGame(){
-    let playerInput = getPlayerInputInString();
+    let playerInput = currentWeaponChoice;
     document.getElementById("playerInput").innerHTML = `Your Input: ${playerInput}`;
     let randomRoll = getRandomRockPaperScissorsResultInString();
     document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
@@ -12,12 +27,15 @@ function playOneGame(){
 function displayGameResult(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
         document.getElementById("gameResult").innerHTML = `Game is won! ${playerInput} beats ${randomResult}!`;
+        document.getElementById("gameResult").style.color = "green";
     }
     else if (isGameDraw(playerInput, randomResult)){
         document.getElementById("gameResult").innerHTML = `Game is a Draw! ${playerInput} is the same as ${randomResult}!`;
+        document.getElementById("gameResult").style.color = "orange";
     }
     else{
         document.getElementById("gameResult").innerHTML = `Game is lost! ${randomResult} beats ${playerInput}!`;
+        document.getElementById("gameResult").style.color = "red";
     }
 }
 
@@ -54,44 +72,4 @@ function getRandomRockPaperScissorsResultInString(){
     let possibleAnswers = ['Rock', 'Paper', 'Scissors'];
     let answer = possibleAnswers[Math.floor(Math.random() * (possibleAnswers.length - 0) + 0)];
     return answer;
-}
-
-function getPlayerInputInString(){
-    let keepGoing = true;
-    let validatedPlayerInput = "";
-    while(keepGoing){
-        let unvalidatedPlayerInput = prompt('Select either Rock, Paper or Scissors by typing your answer.');
-        let tester = /^rock$|^paper$|^scissors$/i;
-        if (!tester.test(unvalidatedPlayerInput)){
-            alert('Wrong Answer!');
-        }
-        else{
-            keepGoing = false;
-            validatedPlayerInput = unvalidatedPlayerInput;
-        }
-    }
-    if (isRock(validatedPlayerInput)){
-        return 'Rock';
-    }
-    else if (isPaper(validatedPlayerInput)){
-        return 'Paper';
-    }
-    else {
-        return 'Scissors';
-    }
-}
-
-function isRock(string){
-    let tester = /^rock$/i;
-    return tester.test(string)
-}
-
-function isPaper(string){
-    let tester = /^paper$/i;
-    return tester.test(string)
-}
-
-function isScissors(string){
-    let tester = /^scissors$/i;
-    return tester.test(string)
 }
