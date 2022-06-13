@@ -17,11 +17,10 @@ function setScissorsWeapon(){
 
 function playOneGame(){
     let playerInput = currentWeaponChoice;
-    document.getElementById("playerInput").innerHTML = `Your Input: ${playerInput}`;
+    document.getElementById("playerInput").innerHTML = `Your Input was: ${playerInput}`;
     let randomRoll = getRandomRockPaperScissorsResultInString();
     document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
     displayGameResult(playerInput, randomRoll);
-    document.getElementById("button").innerHTML = 'Play another game';
 }
 
 function displayGameResult(playerInput, randomResult){
