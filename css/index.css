@@ -1,6 +1,8 @@
 body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 24px;
+    background-color: rgb(20, 23, 22);
+    color: aliceblue;
 }
 
 #playerInput, #randomRoll, #gameResult, #pick{
@@ -16,9 +18,11 @@ body{
 
 #imgContainer{
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    
 }
 
 #imgContainer img{
     max-width: 10%;
+    margin:15px;
 }
