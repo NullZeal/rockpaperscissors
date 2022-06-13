@@ -6,6 +6,7 @@ function playOneGame(){
     let randomRoll = getRandomRockPaperScissorsResultInString();
     document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
     displayGameResult(playerInput, randomRoll);
+    document.getElementById("button").innerHTML = 'Play another game';
 }
 
 function displayGameResult(playerInput, randomResult){
