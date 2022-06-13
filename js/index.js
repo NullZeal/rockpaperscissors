@@ -1,19 +1,22 @@
-for(i=0;i<5;i++){
-    playOneGame();
-}
+document.getElementById("button").addEventListener("click", playOneGame);
+
 function playOneGame(){
-    displayGameResult(getPlayerInputInString(), getRandomRockPaperScissorsResultInString());
+    let playerInput = getPlayerInputInString();
+    document.getElementById("playerInput").innerHTML = `Your Input: ${playerInput}`;
+    let randomRoll = getRandomRockPaperScissorsResultInString();
+    document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
+    displayGameResult(playerInput, randomRoll);
 }
 
 function displayGameResult(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
-        alert('Game is won!')
+        document.getElementById("gameResult").innerHTML = `Game is won! ${playerInput} beats ${randomResult}!`;
     }
     else if (isGameDraw(playerInput, randomResult)){
-        alert('Game is Draw!')
+        document.getElementById("gameResult").innerHTML = `Game is a Draw! ${playerInput} is the same as ${randomResult}!`;
     }
     else{
-        alert('Game is lost!')
+        document.getElementById("gameResult").innerHTML = `Game is lost! ${randomResult} beats ${playerInput}!`;
     }
 }
 
