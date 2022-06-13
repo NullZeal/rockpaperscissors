@@ -25,15 +25,15 @@ function playOneGame(){
 
 function displayGameResult(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
-        document.getElementById("gameResult").innerHTML = `Game is won! ${playerInput} beats ${randomResult}!`;
+        document.getElementById("gameResult").innerHTML = `Game is won!<br><br>${playerInput} beats ${randomResult}!`;
         document.getElementById("gameResult").style.color = "green";
     }
     else if (isGameDraw(playerInput, randomResult)){
-        document.getElementById("gameResult").innerHTML = `Game is a Draw! ${playerInput} is the same as ${randomResult}!`;
+        document.getElementById("gameResult").innerHTML = `Game is a Draw!<br><br>${playerInput} is the same as ${randomResult}!`;
         document.getElementById("gameResult").style.color = "orange";
     }
     else{
-        document.getElementById("gameResult").innerHTML = `Game is lost! ${randomResult} beats ${playerInput}!`;
+        document.getElementById("gameResult").innerHTML = `Game is lost!<br><br>${randomResult} beats ${playerInput}!`;
         document.getElementById("gameResult").style.color = "red";
     }
 }
