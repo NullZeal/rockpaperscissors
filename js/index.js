@@ -1,4 +1,8 @@
 let currentWeaponChoice = "";
+let playerScore = 0;
+let aiScore = 0;
+document.getElementById("scoreDisplay").innerHTML = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
+
 
 function setRockWeapon(){
     currentWeaponChoice = "Rock";
@@ -21,6 +25,8 @@ function playOneGame(){
     let randomRoll = getRandomRockPaperScissorsResultInString();
     document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
     displayGameResult(playerInput, randomRoll);
+    document.getElementById("scoreDisplay").innerHTML = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
+
 }
 
 function displayGameResult(playerInput, randomResult){
@@ -33,6 +39,7 @@ function displayGameResult(playerInput, randomResult){
         document.getElementById("gameResult").style.color = "orange";
     }
     else{
+        aiScore++;
         document.getElementById("gameResult").innerHTML = `Game is lost!<br><br>${randomResult} beats ${playerInput}!`;
         document.getElementById("gameResult").style.color = "red";
     }
@@ -41,12 +48,15 @@ function displayGameResult(playerInput, randomResult){
 function isGameWon(playerInput, randomResult){
     result = false;
     if(playerInput == 'Rock' && randomResult == 'Scissors'){
+        playerScore++;
         result = true;
     }
     if(playerInput == 'Paper' && randomResult == 'Rock'){
+        playerScore++;
         result = true;
     }
     if(playerInput == 'Scissors' && randomResult == 'Paper'){
+        playerScore++;
         result = true;
     }
     return result;

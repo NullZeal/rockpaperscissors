@@ -5,15 +5,13 @@ body{
     color: aliceblue;
 }
 
-#playerInput, #randomRoll, #gameResult, #pick{
-    text-align: center;
-    align-items: center;
+#scoreDisplay{
+    font-size: 30px;
 }
 
-#button{
-    position:absolute;
-    left: 50%;
-    translate: -50%;
+.middle{
+    text-align: center;
+    align-items: center;
 }
 
 #imgContainer{
