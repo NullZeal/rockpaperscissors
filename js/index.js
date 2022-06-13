@@ -1,5 +1,10 @@
 getPlayerInputInString();
 
+const gameResult = document.getElementById('gameResult');
+gameResult.insertAdjacentText('beforeend', gameresult );
+
+
+
 function validateResult(getPlayerInputInString, getRandomRockPaperScissorsResultInString){
     if (getPlayerInputInString == 'Rock') 
 
@@ -9,23 +14,8 @@ function resultOfOneGame(playerInput, aiResult){
 
 }
 
-// const resultOfAi = document.getElementById('computerPlayResult');
-// resultOfAi.insertAdjacentText('beforeend', getRockPaperScissorsAIResult().toString());
 
-function testRock(string){
-    let tester = /^rock$/i;
-    return tester.test(string)
-}
 
-function testRock(string){
-    let tester = /^paper$/i;
-    return tester.test(string)
-}
-
-function testRock(string){
-    let tester = /^scissors$/i;
-    return tester.test(string)
-}
 
 function getRandomRockPaperScissorsResultInString(){
     let possibleAnswers = ["Rock", "Paper", "Scissors"];
@@ -47,5 +37,28 @@ function getPlayerInputInString(){
             validatedPlayerInput = unvalidatedPlayerInput;
         }
     }
-    return validatedPlayerInput;
+    if (isRock(validatedPlayerInput)){
+        return "Rock";
+    }
+    else if (isPaper(validatedPlayerInput)){
+        return "Paper";
+    }
+    else {
+        return "Scissors";
+    }
+}
+
+function isRock(string){
+    let tester = /^rock$/i;
+    return tester.test(string)
+}
+
+function isPaper(string){
+    let tester = /^paper$/i;
+    return tester.test(string)
+}
+
+function isScissors(string){
+    let tester = /^scissors$/i;
+    return tester.test(string)
 }
