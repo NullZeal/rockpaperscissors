@@ -1,24 +1,53 @@
-getPlayerInputInString();
-
-const gameResult = document.getElementById('gameResult');
-gameResult.insertAdjacentText('beforeend', gameresult );
-
-
-
-function validateResult(getPlayerInputInString, getRandomRockPaperScissorsResultInString){
-    if (getPlayerInputInString == 'Rock') 
-
+for(i=0;i<5;i++){
+    playOneGame();
+}
+function playOneGame(){
+    displayGameResult(getPlayerInputInString(), getRandomRockPaperScissorsResultInString());
 }
 
-function resultOfOneGame(playerInput, aiResult){
-
+function displayGameResult(playerInput, randomResult){
+    if (isGameWon(playerInput, randomResult)){
+        alert('Game is won!')
+    }
+    else if (isGameDraw(playerInput, randomResult)){
+        alert('Game is Draw!')
+    }
+    else{
+        alert('Game is lost!')
+    }
 }
 
+function isGameWon(playerInput, randomResult){
+    result = false;
+    if(playerInput == 'Rock' && randomResult == 'Scissors'){
+        result = true;
+    }
+    if(playerInput == 'Paper' && randomResult == 'Rock'){
+        result = true;
+    }
+    if(playerInput == 'Scissors' && randomResult == 'Paper'){
+        result = true;
+    }
+    return result;
+}
 
+function isGameDraw(playerInput, randomResult){
+    result = false;
+    if(playerInput == 'Rock' && randomResult == 'Rock'){
+        result = true;
+    }
+    if(playerInput == 'Paper' && randomResult == 'Paper'){
+        result = true;
+    }
+    if(playerInput == 'Scissors' && randomResult == 'Scissors'){
+        result = true;
+    }
+    return result;
+}
 
 
 function getRandomRockPaperScissorsResultInString(){
-    let possibleAnswers = ["Rock", "Paper", "Scissors"];
+    let possibleAnswers = ['Rock', 'Paper', 'Scissors'];
     let answer = possibleAnswers[Math.floor(Math.random() * (possibleAnswers.length - 0) + 0)];
     return answer;
 }
@@ -38,13 +67,13 @@ function getPlayerInputInString(){
         }
     }
     if (isRock(validatedPlayerInput)){
-        return "Rock";
+        return 'Rock';
     }
     else if (isPaper(validatedPlayerInput)){
-        return "Paper";
+        return 'Paper';
     }
     else {
-        return "Scissors";
+        return 'Scissors';
     }
 }
 
