@@ -1,8 +1,14 @@
 let currentWeaponChoice = "";
 let playerScore = 0;
 let aiScore = 0;
-document.getElementById("scoreDisplay").innerHTML = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
+document.getElementById("scoreDisplay").textContent = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
 //test
+
+document.getElementById("rockImg").addEventListener('click', setRockWeapon);
+
+document.getElementById("paperImg").addEventListener("click", setPaperWeapon);
+
+document.getElementById("scissorsImg").addEventListener("click", setScissorsWeapon);
 
 function setRockWeapon(){
     currentWeaponChoice = "Rock";
