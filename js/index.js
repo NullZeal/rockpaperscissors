@@ -2,7 +2,7 @@ let currentWeaponChoice = "";
 let playerScore = 0;
 let aiScore = 0;
 document.getElementById("scoreDisplay").innerHTML = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
-
+//test
 
 function setRockWeapon(){
     currentWeaponChoice = "Rock";
