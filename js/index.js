@@ -1,67 +1,84 @@
 let currentWeaponChoice = "";
 let playerScore = 0;
 let aiScore = 0;
-document.getElementById("scoreDisplay").textContent = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
-//test
 
-document.getElementById("rockImg").addEventListener('click', setRockWeapon);
+const listOfImg = document.getElementsByTagName("img");
 
-document.getElementById("paperImg").addEventListener("click", setPaperWeapon);
-
-document.getElementById("scissorsImg").addEventListener("click", setScissorsWeapon);
-
-function setRockWeapon(){
-    currentWeaponChoice = "Rock";
-    playOneGame();
+for(let img of listOfImg){
+    img.addEventListener('click', () => 
+    {   
+        if(img.id == "rockImg")
+        {
+            currentWeaponChoice = 'Rock';
+        }
+        else if (img.id == "paperImg")
+        {
+            currentWeaponChoice = 'Paper';
+        }
+        else 
+        {
+            currentWeaponChoice = 'Scissors';
+        }
+        startGame();
+    })
 }
 
-function setPaperWeapon(){
-    currentWeaponChoice = "Paper";
-    playOneGame();
+function startGame(){
+    resetScoreIfEndGameReached();
+    displayCurrentWeaponChoice();
+
+    let aiRoll = getRandomRockPaperScissorsResultInString();
+    displayAiRollTextContent(aiRoll);
+
+    displayMatchOutcome(currentWeaponChoice, aiRoll);
+
+    displayScore();
+    displayGameOutcome();
 }
 
-function setScissorsWeapon(){
-    currentWeaponChoice = "Scissors";
-    playOneGame();
+function resetScoreIfEndGameReached(){
+    let gameOutcome = document.getElementById("gameOutcome");
+    if(gameOutcome.textContent != ''){
+        playerScore = 0;
+        aiScore = 0;
+    }
 }
 
-function playOneGame(){
-    let playerInput = currentWeaponChoice;
-    document.getElementById("playerInput").innerHTML = `Your Input was: ${playerInput}`;
-    let randomRoll = getRandomRockPaperScissorsResultInString();
-    document.getElementById("randomRoll").innerHTML = `AI Roll: ${randomRoll}`;
-    displayGameResult(playerInput, randomRoll);
-    document.getElementById("scoreDisplay").innerHTML = `Player score: ${playerScore}<br>Ai score: ${aiScore}`;
-
+function displayCurrentWeaponChoice(){
+    document.getElementById("currentWeaponChoice").innerHTML = `Your Input was: ${currentWeaponChoice}`;
 }
 
-function displayGameResult(playerInput, randomResult){
+function displayAiRollTextContent(aiRoll){
+    document.getElementById("aiRoll").innerHTML = `AI Roll: ${aiRoll}`;
+}
+
+function displayScore(){
+    document.getElementById("scoreDisplay").textContent = `Player score: ${playerScore}
+    Ai score: ${aiScore}`;
+}
+
+function displayMatchOutcome(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
-        document.getElementById("gameResult").innerHTML = `Game is won!<br><br>${playerInput} beats ${randomResult}!`;
-        document.getElementById("gameResult").style.color = "green";
+        document.getElementById("matchOutcome").innerHTML = `Game is won!<br><br>${playerInput} beats ${randomResult}!`;
+        document.getElementById("matchOutcome").style.color = "green";
     }
     else if (isGameDraw(playerInput, randomResult)){
-        document.getElementById("gameResult").innerHTML = `Game is a Draw!<br><br>${playerInput} is the same as ${randomResult}!`;
-        document.getElementById("gameResult").style.color = "orange";
+        document.getElementById("matchOutcome").innerHTML = `Game is a Draw!<br><br>${playerInput} is the same as ${randomResult}!`;
+        document.getElementById("matchOutcome").style.color = "orange";
     }
     else{
         aiScore++;
-        document.getElementById("gameResult").innerHTML = `Game is lost!<br><br>${randomResult} beats ${playerInput}!`;
-        document.getElementById("gameResult").style.color = "red";
+        document.getElementById("matchOutcome").innerHTML = `Game is lost!<br><br>${randomResult} beats ${playerInput}!`;
+        document.getElementById("matchOutcome").style.color = "red";
     }
 }
 
 function isGameWon(playerInput, randomResult){
     result = false;
-    if(playerInput == 'Rock' && randomResult == 'Scissors'){
-        playerScore++;
-        result = true;
-    }
-    if(playerInput == 'Paper' && randomResult == 'Rock'){
-        playerScore++;
-        result = true;
-    }
-    if(playerInput == 'Scissors' && randomResult == 'Paper'){
+    if(playerInput == 'Rock' && randomResult == 'Scissors'
+    || playerInput == 'Paper' && randomResult == 'Rock'
+    || playerInput == 'Scissors' && randomResult == 'Paper')
+    {
         playerScore++;
         result = true;
     }
@@ -70,16 +87,31 @@ function isGameWon(playerInput, randomResult){
 
 function isGameDraw(playerInput, randomResult){
     result = false;
-    if(playerInput == 'Rock' && randomResult == 'Rock'){
-        result = true;
-    }
-    if(playerInput == 'Paper' && randomResult == 'Paper'){
-        result = true;
-    }
-    if(playerInput == 'Scissors' && randomResult == 'Scissors'){
+    if(playerInput == 'Rock' && randomResult == 'Rock'
+    || playerInput == 'Paper' && randomResult == 'Paper'
+    || playerInput == 'Scissors' && randomResult == 'Scissors')
+    {
         result = true;
     }
     return result;
+}
+
+function displayGameOutcome(){
+
+    let gameOutcome = document.getElementById("gameOutcome");
+
+    if(playerScore >= 5 || aiScore >=5){
+
+        if(playerScore > aiScore){
+             gameOutcome.textContent = 'PLAYER WINS THE SET! They got 5 points first.';
+        }
+        else {
+            gameOutcome.textContent = 'AI WINS THE SET! They got 5 points first.';
+        }
+    }
+    else{
+        gameOutcome.textContent = '';
+    }
 }
 
 function getRandomRockPaperScissorsResultInString(){
@@ -87,3 +119,4 @@ function getRandomRockPaperScissorsResultInString(){
     let answer = possibleAnswers[Math.floor(Math.random() * (possibleAnswers.length - 0) + 0)];
     return answer;
 }
+
