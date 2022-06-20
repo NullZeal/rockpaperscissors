@@ -17,7 +17,6 @@ body{
 #imgContainer{
     display: flex;
     justify-content:center;
-    
 }
 
 #imgContainer img{

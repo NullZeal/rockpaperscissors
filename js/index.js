@@ -1,7 +1,7 @@
 let currentWeaponChoice = "";
 let playerScore = 0;
 let aiScore = 0;
-let nMatchToWin = 3;
+let nMatchToWin = 5;
 
 const firstToXMatchToWin = document.querySelector('#pick');
 
