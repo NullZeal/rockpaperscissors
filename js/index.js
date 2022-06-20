@@ -1,8 +1,13 @@
 let currentWeaponChoice = "";
 let playerScore = 0;
 let aiScore = 0;
+let nMatchToWin = 3;
 
-const listOfImg = document.getElementsByTagName("img");
+const firstToXMatchToWin = document.querySelector('#pick');
+
+firstToXMatchToWin.innerHTML = `First to ${nMatchToWin} wins the set!<br><br>Pick your weapon!</p`
+
+listOfImg = document.getElementsByTagName("img");
 
 for(let img of listOfImg){
     img.addEventListener('click', () => 
@@ -10,6 +15,7 @@ for(let img of listOfImg){
         if(img.id == "rockImg")
         {
             currentWeaponChoice = 'Rock';
+            img.style
         }
         else if (img.id == "paperImg")
         {
@@ -97,13 +103,13 @@ function displayGameOutcomeIfEndGameReached(){
 
     let gameOutcome = document.getElementById("gameOutcome");
 
-    if(playerScore >= 5 || aiScore >=5){
+    if(playerScore >= nMatchToWin || aiScore >= nMatchToWin){
 
         if(playerScore > aiScore){
-             gameOutcome.textContent = 'GAME OVER - PLAYER WINS THE SET! They got 5 points first.';
+             gameOutcome.textContent = `GAME OVER - PLAYER WINS THE SET - They got ${nMatchToWin} points first.`;
         }
         else {
-            gameOutcome.textContent = 'GAME OVER - AI WINS THE SET! They got 5 points first.';
+            gameOutcome.textContent = `GAME OVER - AI WINS THE SET - They got ${nMatchToWin} points first.`;
         }
     }
     else{
