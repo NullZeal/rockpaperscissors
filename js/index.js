@@ -116,4 +116,3 @@ function getRandomRockPaperScissorsResultInString(){
     let answer = possibleAnswers[Math.floor(Math.random() * (possibleAnswers.length - 0) + 0)];
     return answer;
 }
-
