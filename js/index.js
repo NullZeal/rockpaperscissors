@@ -15,7 +15,6 @@ for(let img of listOfImg){
         if(img.id == "rockImg")
         {
             currentWeaponChoice = 'Rock';
-            img.style
         }
         else if (img.id == "paperImg")
         {
