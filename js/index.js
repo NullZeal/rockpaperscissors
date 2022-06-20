@@ -56,16 +56,16 @@ function displayScore(){
 
 function displayColoredMatchOutcome(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
-        document.getElementById("matchOutcome").innerHTML = `Game is won!<br><br>${playerInput} beats ${randomResult}!`;
+        document.getElementById("matchOutcome").innerHTML = `Match is won!<br><br>${playerInput} beats ${randomResult}!`;
         document.getElementById("matchOutcome").style.color = "green";
     }
     else if (isGameDraw(playerInput, randomResult)){
-        document.getElementById("matchOutcome").innerHTML = `Game is a Draw!<br><br>${playerInput} is the same as ${randomResult}!`;
+        document.getElementById("matchOutcome").innerHTML = `Match is a Draw!<br><br>${playerInput} is the same as ${randomResult}!`;
         document.getElementById("matchOutcome").style.color = "orange";
     }
     else{
         aiScore++;
-        document.getElementById("matchOutcome").innerHTML = `Game is lost!<br><br>${randomResult} beats ${playerInput}!`;
+        document.getElementById("matchOutcome").innerHTML = `Match is lost!<br><br>${randomResult} beats ${playerInput}!`;
         document.getElementById("matchOutcome").style.color = "red";
     }
 }
@@ -100,10 +100,10 @@ function displayGameOutcomeIfEndGameReached(){
     if(playerScore >= 5 || aiScore >=5){
 
         if(playerScore > aiScore){
-             gameOutcome.textContent = 'PLAYER WINS THE SET! They got 5 points first.';
+             gameOutcome.textContent = 'GAME OVER - PLAYER WINS THE SET! They got 5 points first.';
         }
         else {
-            gameOutcome.textContent = 'AI WINS THE SET! They got 5 points first.';
+            gameOutcome.textContent = 'GAME OVER - AI WINS THE SET! They got 5 points first.';
         }
     }
     else{
