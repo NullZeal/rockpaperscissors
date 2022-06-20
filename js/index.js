@@ -26,14 +26,11 @@ for(let img of listOfImg){
 function startGame(){
     resetScoreIfEndGameReached();
     displayCurrentWeaponChoice();
-
     let aiRoll = getRandomRockPaperScissorsResultInString();
     displayAiRollTextContent(aiRoll);
-
-    displayMatchOutcome(currentWeaponChoice, aiRoll);
-
+    displayColoredMatchOutcome(currentWeaponChoice, aiRoll);
     displayScore();
-    displayGameOutcome();
+    displayGameOutcomeIfEndGameReached();
 }
 
 function resetScoreIfEndGameReached(){
@@ -57,7 +54,7 @@ function displayScore(){
     Ai score: ${aiScore}`;
 }
 
-function displayMatchOutcome(playerInput, randomResult){
+function displayColoredMatchOutcome(playerInput, randomResult){
     if (isGameWon(playerInput, randomResult)){
         document.getElementById("matchOutcome").innerHTML = `Game is won!<br><br>${playerInput} beats ${randomResult}!`;
         document.getElementById("matchOutcome").style.color = "green";
@@ -96,7 +93,7 @@ function isGameDraw(playerInput, randomResult){
     return result;
 }
 
-function displayGameOutcome(){
+function displayGameOutcomeIfEndGameReached(){
 
     let gameOutcome = document.getElementById("gameOutcome");
 
